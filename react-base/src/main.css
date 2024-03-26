@@ -4,7 +4,13 @@
 } */
 
 .todos{
-    display: flex
+    display: flex;
+    gap:8px
+}
+
+.todo{
+    padding: 1rem;
+    border: 1px solid gainsboro;
 }
 
 
