@@ -13,5 +13,9 @@
     border: 1px solid gainsboro;
 }
 
+.capitalize{
+    text-transform: capitalize;
+}
+
 
 
