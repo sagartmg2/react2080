@@ -1,6 +1,6 @@
 /* Component */
 function SingleTodo(props) {
-  console.log("props", props); // react
+  console.log("props", props); // props is an object
   return (
     <div className="todo">
       <h3 className="capitalize">{props.title}</h3>

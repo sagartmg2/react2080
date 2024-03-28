@@ -26,6 +26,12 @@ let todos = [
       "lorem ipsum dolor, sit amet consectetur adipisicing ipsum dolor",
     status: false,
   },
+  {
+    title: "express",
+    description:
+      "lorem ipsum dolor, sit amet consectetur adipisicing ipsum dolor",
+    status: false,
+  },
 ];
 
 export default function Todos() {
@@ -34,25 +40,31 @@ export default function Todos() {
       {/* Fragment */}
       <h2>Todos</h2>
       <div id="todos" className="todos">
-        {/*  using component */}
-        {todos.map((el) => {
+        {todos.map((el, index) => {
           return (
             <SingleTodo
-              status="completed"
+              key={index}
+              status={el.status}
               title={el.title}
               description={el.description}
             />
           );
         })}
+
         {/* <SingleTodo
-          status="completed"
-          title="react"
-          description="react description"
+          status={true}
+          title="html"
+          description={"html description"}
         />
         <SingleTodo
-          status="completed"
-          title="git"
-          description="git description"
+          status={todos[0].status}
+          title={todos[0].title}
+          description={todos[0].description}
+        />
+        <SingleTodo
+          status={todos[1].status}
+          title={todos[1].title}
+          description={todos[1].description}
         /> */}
       </div>
     </>
