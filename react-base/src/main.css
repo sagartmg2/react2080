@@ -3,19 +3,36 @@
     color:whitesmoke
 } */
 
-.todos{
-    display: flex;
-    gap:8px
+.todos {
+  display: flex;
+  gap: 8px;
 }
 
-.todo{
-    padding: 1rem;
-    border: 1px solid gainsboro;
+.todo {
+  padding: 1rem;
+  border: 1px solid gainsboro;
 }
 
-.capitalize{
-    text-transform: capitalize;
+.capitalize {
+  text-transform: capitalize;
 }
 
+.product {
+  border: 1px solid;
+  padding: 1rem;
+  width: 25%;
+  list-style: none;
+  margin-bottom: 1rem;
+}
 
+.product img {
+  max-width: 100%;
+}
 
+.badge {
+  display: inline-block;
+  background-color: gainsboro;
+  padding: 5px 2px;
+  border-radius: 1rem;
+  margin: 5px 0px;
+}

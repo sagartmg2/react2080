@@ -1,5 +1,6 @@
 import Todos from "./Todos";
 import Users from "./Users";
+import Products  from "./Products";
 
 let title = "React.js";
 let description = "Lorem ipsum dolor sit amet consectetur adipisicin";
@@ -12,6 +13,7 @@ function App() {
         <p>{description}</p>
         <Todos />
         <Users />
+        <Products/>
         {/* <Courses/> */}
 
       </div>
