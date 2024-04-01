@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      /*  .projects{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+        */
+
+      .projects {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .project {
+        /*  when used grid, no need for width */
+        /* width: 25%;  */
+        border: 1px solid;
+        padding: 1rem;
+        border-radius: 12px;
+        text-align: justify;
+      }
+
+      /* .project h2{
+        text-align: center;
+      }
+
+      h1{
+        text-align: center;
+      } */
+
+      .text-center{
+        text-align: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1 class="text-center">Projects</h1>
+    <div class="projects">
+      <div class="project">
+        <h2 class="text-center">Git</h2>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
+          temporibus quisquam perspiciatis vitae quaerat veniam debitis repellat
+          voluptates sit tempore, aspernatur quas facere quia, quis asperiores
+          et commodi! Explicabo, qui.
+        </p>
+      </div>
+      <div class="project">
+        <h2 class="text-center">Git</h2>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
+          temporibus quisquam perspiciatis vitae quaerat veniam debitis repellat
+          voluptates sit tempore, aspernatur quas facere quia, quis asperiores
+          et commodi! Explicabo, qui.
+        </p>
+      </div>
+      <div class="project">
+        <h2>Git</h2>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
+          temporibus quisquam perspiciatis vitae quaerat veniam debitis repellat
+          voluptates sit tempore, aspernatur quas facere quia, quis asperiores
+          et commodi! Explicabo, qui.
+        </p>
+      </div>
+      <div class="project">
+        <h2>Git</h2>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
+          temporibus quisquam perspiciatis vitae quaerat veniam debitis repellat
+          voluptates sit tempore, aspernatur quas facere quia, quis asperiores
+          et commodi! Explicabo, qui.
+        </p>
+      </div>
+      <div class="project">
+        <h2>Git</h2>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
+          temporibus quisquam perspiciatis vitae quaerat veniam debitis repellat
+          voluptates sit tempore, aspernatur quas facere quia, quis asperiores
+          et commodi! Explicabo, qui.
+        </p>
+      </div>
+      <div class="project">
+        <h2>Git</h2>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
+          temporibus quisquam perspiciatis vitae quaerat veniam debitis repellat
+          voluptates sit tempore, aspernatur quas facere quia, quis asperiores
+          et commodi! Explicabo, qui.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

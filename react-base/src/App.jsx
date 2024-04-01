@@ -1,8 +1,10 @@
 import Todos from "./Todos";
 import Users from "./Users";
-import Products  from "./Products";
+import Products from "./Products";
+import Counter from "./Counter";
+import TodosList from "./TodosList";
 
-let title = "React.js";
+let title = "state in react.js";
 let description = "Lorem ipsum dolor sit amet consectetur adipisicin";
 
 function App() {
@@ -11,20 +13,18 @@ function App() {
       <div>
         <h1>{title}</h1>
         <p>{description}</p>
-        <Todos />
-        <Users />
-        <Products/>
+        {/* <Counter /> */}
+        <TodosList />
+        {/* <Todos /> */}
+        {/* <Users /> */}
+        {/* <Products/> */}
         {/* <Courses/> */}
-
       </div>
     </div>
   );
 }
 
 export default App;
-
-
-
 
 {
   /* PrintTodo("react","descritpion") */

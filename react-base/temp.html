@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Count: <span id="output"></span></h1>
+    <button onclick="increment()" id="increment">increment</button>
+    <button onclick="decrement()">decrement</button>
+    <script>
+      let value = 100;
+      setValue()
+
+      function setValue() {
+        document.getElementById("output").innerText = value;
+      }
+
+      function increment() {
+        value++;
+        setValue();
+      }
+      function decrement() {
+        value--;
+        setValue();
+      }
+    </script>
+  </body>
+</html>
