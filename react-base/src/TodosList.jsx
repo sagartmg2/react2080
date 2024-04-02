@@ -1,26 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function TodosList() {
-  let todos = ["react", "css"];
-  /* convert to state using usState */
+  // console.log("re-render");
+
+  let initialTodos = ["html", "css", "jvascript"];
+
+  const [todos, setTodos] = useState(initialTodos);
+  let [inputValue, setInputValue] = useState("hello");
+
+  function handleInputChange(e) {
+    // inputValue = e.target.value; // donot change the state variable directly
+    setInputValue(e.target.value);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
-    todos.push(e.target.title.value);
-    console.log(todos);
+    console.log(e.target.title.value);
+    // todos.push(inputValue); // donot change the state variable directly
+
+    // let temp = todos; // wrong // temp also points to location of todos // reference-datatype
+    let temp = [...todos]; // createing new array  and copyting valuees of todos
+    temp.push(inputValue); // ["html", "css", "jvascript","React"]
+    setTodos(temp);
   }
 
   return (
     <div>
+      <h2>user is typing: {inputValue} </h2>
       <form onSubmit={handleSubmit}>
-        <input name="title" type="text" />
-        <button>create new</button>
+        <input onChange={handleInputChange} name="title" type="text" />
+        <button>create</button>
       </form>
-
+      <h3>Todos</h3>
       <ul>
-        {/* mapping  */}
-        <li>react</li>
-        <li>css</li>
+        {todos.map((el, index) => {
+          return (
+            <li>
+              {el}
+              <button
+                onClick={() => {
+                  console.log("delete -index", index);
+                }}
+              >
+                delete
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

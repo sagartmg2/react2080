@@ -11,8 +11,8 @@ function App() {
   return (
     <div>
       <div>
-        <h1>{title}</h1>
-        <p>{description}</p>
+        {/* <h1>{title}</h1>
+        <p>{description}</p> */}
         {/* <Counter /> */}
         <TodosList />
         {/* <Todos /> */}
