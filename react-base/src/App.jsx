@@ -3,6 +3,7 @@ import Users from "./Users";
 import Products from "./Products";
 import Counter from "./Counter";
 import TodosList from "./TodosList";
+import GoogleTabs from "./GoogleTabs";
 
 let title = "state in react.js";
 let description = "Lorem ipsum dolor sit amet consectetur adipisicin";
@@ -14,7 +15,8 @@ function App() {
         {/* <h1>{title}</h1>
         <p>{description}</p> */}
         {/* <Counter /> */}
-        <TodosList />
+        {/* <TodosList /> */}
+        <GoogleTabs/>
         {/* <Todos /> */}
         {/* <Users /> */}
         {/* <Products/> */}

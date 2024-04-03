@@ -4,7 +4,6 @@ export default function TodosList() {
   // console.log("re-render");
 
   let initialTodos = ["html", "css", "jvascript"];
-
   const [todos, setTodos] = useState(initialTodos);
   let [inputValue, setInputValue] = useState("hello");
 
@@ -24,6 +23,23 @@ export default function TodosList() {
     setTodos(temp);
   }
 
+  function deleteTodo(deleteableIndex) {
+    /* 
+    let temp = [...todos]; // ["html", "css", "jvascript"]
+    temp.splice(index, 1); // index = 0 //  [ "css", "jvascript"]
+    setTodos(temp);
+    */
+
+    let newTodos = todos.filter((el, index) => {
+      if (index != deleteableIndex) {
+        return true;
+      }
+    });
+    setTodos(newTodos);
+  }
+
+  console.log({ todos });
+
   return (
     <div>
       <h2>user is typing: {inputValue} </h2>
@@ -35,11 +51,11 @@ export default function TodosList() {
       <ul>
         {todos.map((el, index) => {
           return (
-            <li>
+            <li key={index}>
               {el}
               <button
                 onClick={() => {
-                  console.log("delete -index", index);
+                  deleteTodo(index);
                 }}
               >
                 delete
@@ -48,6 +64,8 @@ export default function TodosList() {
           );
         })}
       </ul>
+      {todos.length == 0 ? <p>empty( 0 ) todos </p> : null}
+      {todos.length === 0 && <p>empty( 0 ) todos </p>}
     </div>
   );
 }
