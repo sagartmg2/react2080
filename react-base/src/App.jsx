@@ -4,6 +4,7 @@ import Products from "./Products";
 import Counter from "./Counter";
 import TodosList from "./TodosList";
 import GoogleTabs from "./GoogleTabs";
+import ShoppingList from "./ShoppingList";
 
 let title = "state in react.js";
 let description = "Lorem ipsum dolor sit amet consectetur adipisicin";
@@ -15,8 +16,9 @@ function App() {
         {/* <h1>{title}</h1>
         <p>{description}</p> */}
         {/* <Counter /> */}
+        <ShoppingList />
         {/* <TodosList /> */}
-        <GoogleTabs/>
+        {/* <GoogleTabs/> */}
         {/* <Todos /> */}
         {/* <Users /> */}
         {/* <Products/> */}

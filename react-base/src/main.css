@@ -36,3 +36,13 @@
   border-radius: 1rem;
   margin: 5px 0px;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid;
+  padding: 1rem;
+}

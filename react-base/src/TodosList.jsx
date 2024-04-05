@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 export default function TodosList() {
-  // console.log("re-render");
-
   let initialTodos = ["html", "css", "jvascript"];
   const [todos, setTodos] = useState(initialTodos);
   let [inputValue, setInputValue] = useState("hello");
@@ -19,7 +17,7 @@ export default function TodosList() {
 
     // let temp = todos; // wrong // temp also points to location of todos // reference-datatype
     let temp = [...todos]; // createing new array  and copyting valuees of todos
-    temp.push(inputValue); // ["html", "css", "jvascript","React"]
+    temp.push(e.target.title.value); // ["html", "css", "jvascript","React"]
     setTodos(temp);
   }
 
