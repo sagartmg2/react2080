@@ -5,6 +5,8 @@ import Counter from "./Counter";
 import TodosList from "./TodosList";
 import GoogleTabs from "./GoogleTabs";
 import ShoppingList from "./ShoppingList";
+import ApiProductsList from "./ApiProductsList";
+import ComponentLIfeCyle from "./ComponentLIfeCyle";
 
 let title = "state in react.js";
 let description = "Lorem ipsum dolor sit amet consectetur adipisicin";
@@ -16,7 +18,9 @@ function App() {
         {/* <h1>{title}</h1>
         <p>{description}</p> */}
         {/* <Counter /> */}
-        <ShoppingList />
+        {/* <ComponentLIfeCyle/> */}
+        <ApiProductsList/>
+        {/* <ShoppingList /> */}
         {/* <TodosList /> */}
         {/* <GoogleTabs/> */}
         {/* <Todos /> */}

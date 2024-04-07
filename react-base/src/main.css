@@ -1,7 +1,7 @@
-/* body{
+body{
     background-color: #333;
     color:whitesmoke
-} */
+}
 
 .todos {
   display: flex;

@@ -12,8 +12,7 @@ export default function ShoppingList() {
     quantity: 0,
   });
 
-  
-  const [upateItemIndx, setupateItemIndx] = useState(null)
+  const [upateItemIndx, setupateItemIndx] = useState(null);
 
   //   const [title, setTitle] = useState("");
   //   const [quantity, setquantity] = useState(second);
@@ -25,24 +24,37 @@ export default function ShoppingList() {
     let title = e.target.title.value;
     let quantity = e.target.quantity.value;
 
+    let updatedItems;
     /* code here for update */
-    
-    let updatedItems = [...items, { title, quantity }];
+
+    if (upateItemIndx != null) {
+      // update existing
+      updatedItems = [...items];
+      updatedItems[upateItemIndx].title = inputValue.title;
+      updatedItems[upateItemIndx].quantity = inputValue.quantity;
+    } else {
+      // create new.
+      updatedItems = [...items, { title, quantity }];
+      // setItems((prevItems) => [...prevItems, { title, quantity }]);
+    }
 
     setItems(updatedItems);
-    setupateItemIndx(null)
+    setupateItemIndx(null);
+    setInputValue({
+      title: "",
+      quantity: "",
+    });
   };
 
   const updateItem = (idx, title, quantity) => {
     console.log(title, quantity);
     // document.getElementById("title").value = title;
     // document.getElementById("quantity").value = quanity;
-    setupateItemIndx(idx)
+    setupateItemIndx(idx);
     setInputValue({
-        title,
-        quantity
-    })
-
+      title,
+      quantity,
+    });
   };
 
   return (
@@ -56,9 +68,9 @@ export default function ShoppingList() {
           value={inputValue.title}
           onChange={(e) => {
             setInputValue({
-                ...inputValue,
-                title:e.target.value
-            })
+              ...inputValue,
+              title: e.target.value,
+            });
           }}
           type="text"
           name="title"
@@ -72,9 +84,9 @@ export default function ShoppingList() {
           placeholder="quantity"
           onChange={(e) => {
             setInputValue({
-                ...inputValue,
-                quantity:e.target.value
-            })
+              ...inputValue,
+              quantity: e.target.value,
+            });
           }}
         />
         <input type="submit" value={"submit"} />
