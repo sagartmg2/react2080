@@ -1,5 +1,6 @@
 /* named import */
 import { useState } from "react";
+import Header from "./Header";
 
 /* 
     function useState(initalValue){
@@ -22,7 +23,7 @@ export default function Counter() {
   function increment() {
     console.log("increment...");
     setCount(count + 1);
-    console.log({count});
+    console.log({ count });
   }
 
   function decrement() {
@@ -33,6 +34,7 @@ export default function Counter() {
   console.log("render");
   return (
     <>
+      <Header />
       <h1>
         state variable Count: <span id="output">{count}</span>
       </h1>

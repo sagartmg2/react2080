@@ -1,3 +1,5 @@
+import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
+
 import Todos from "./Todos";
 import Users from "./Users";
 import Products from "./Products";
@@ -8,22 +10,53 @@ import ShoppingList from "./ShoppingList";
 import ApiProductsList from "./ApiProductsList";
 import ComponentLIfeCyle from "./ComponentLIfeCyle";
 import ApiProductsListAutoLoad from "./ApiProductsListAutoLoad";
+
 import TodosApi from "./TodosApi";
+import Header from "./Header";
 
 let title = "state in react.js";
 let description = "Lorem ipsum dolor sit amet consectetur adipisicin";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <>
+          <Header />
+          <div>Home Page</div>
+        </>
+      ),
+    },
+    {
+      path: "/counter",
+      element: <Counter />,
+    },
+    {
+      path: "/todos-api",
+      element: <TodosApi />,
+    },
+    {
+      path: "/products-autoload",
+      element: <ApiProductsListAutoLoad />,
+    },
+  ]);
+
   return (
     <div>
       <div>
+        
+
+        <RouterProvider router={router} />
+
+        
         {/* <h1>{title}</h1>
         <p>{description}</p> */}
         {/* <Counter /> */}
         {/* <ComponentLIfeCyle /> */}
         {/* <ApiProductsList /> */}
         {/* <ApiProductsListAutoLoad /> */}
-        <TodosApi/>
+        {/* <TodosApi /> */}
         {/* <ShoppingList /> */}
         {/* <TodosList /> */}
         {/* <GoogleTabs/> */}

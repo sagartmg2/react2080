@@ -1,8 +1,12 @@
-body{
+/* body{
     background-color: #333;
     color:whitesmoke
-}
+} */
 
+header {
+  display: flex;
+  gap: 1rem;
+}
 .todos {
   display: flex;
   gap: 8px;

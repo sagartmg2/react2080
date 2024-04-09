@@ -8,7 +8,7 @@ export default function TodosApi() {
     axios.get(url).then((res) => {
       settodos(res.data);
     });
-  }, []);
+  }, []); // empty [] depencies, means use effect will run only once.
 
   function handleSumit() {
     let url = `http://localhost:8000/api/todos`;
@@ -16,6 +16,7 @@ export default function TodosApi() {
     axios
       .post(url, {
         title: "mongodobl",
+        status: true,
       })
       .then((res) => {
         settodos(res.data);
