@@ -22,6 +22,7 @@ export default function Counter() {
   function increment() {
     console.log("increment...");
     setCount(count + 1);
+    console.log({count});
   }
 
   function decrement() {

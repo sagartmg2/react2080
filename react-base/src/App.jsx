@@ -7,6 +7,8 @@ import GoogleTabs from "./GoogleTabs";
 import ShoppingList from "./ShoppingList";
 import ApiProductsList from "./ApiProductsList";
 import ComponentLIfeCyle from "./ComponentLIfeCyle";
+import ApiProductsListAutoLoad from "./ApiProductsListAutoLoad";
+import TodosApi from "./TodosApi";
 
 let title = "state in react.js";
 let description = "Lorem ipsum dolor sit amet consectetur adipisicin";
@@ -18,8 +20,10 @@ function App() {
         {/* <h1>{title}</h1>
         <p>{description}</p> */}
         {/* <Counter /> */}
-        {/* <ComponentLIfeCyle/> */}
-        <ApiProductsList/>
+        {/* <ComponentLIfeCyle /> */}
+        {/* <ApiProductsList /> */}
+        {/* <ApiProductsListAutoLoad /> */}
+        <TodosApi/>
         {/* <ShoppingList /> */}
         {/* <TodosList /> */}
         {/* <GoogleTabs/> */}

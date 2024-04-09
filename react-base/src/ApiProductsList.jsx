@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import React, { useState } from "react";
 
 export default function ApiProductsList() {
@@ -16,8 +17,7 @@ export default function ApiProductsList() {
   };
 
   return (
-    <div>
-        
+    <div>   
       <button onClick={fetchProducts}>fetch Products</button>
       {isLoading && (
         <>
