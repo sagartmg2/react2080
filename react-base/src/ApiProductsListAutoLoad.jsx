@@ -7,6 +7,9 @@ export default function ApiProductsListAutoLoad() {
   const [products, setProducts] = useState([]);
   const [isLoading, setisLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("")
+  const [tempSearch,setTempSearchTerm] = useState("")
+
+
 
   const fetchProducts = () => {
     setisLoading(true);
@@ -17,6 +20,7 @@ export default function ApiProductsListAutoLoad() {
       setisLoading(false);
     });
   };
+  
 
   useEffect(() =>{
     fetchProducts()
@@ -25,11 +29,11 @@ export default function ApiProductsListAutoLoad() {
   return (
     <div>   
       {/* <button onClick={fetchProducts}>fetch Products</button> */}
-      {isLoading && (
+      {/* {isLoading && (
         <>
           <p>loading....</p>
         </>
-      )}
+      )} */}
 
         <input value={searchTerm} onChange={(e) =>{
         setSearchTerm(e.target.value)
@@ -41,6 +45,11 @@ export default function ApiProductsListAutoLoad() {
           return <li key={el.id} >{el.title}</li>;
         })}
       </ul>
+      {
+        products.length  === 0
+        &&
+        <p>empty products...</p>
+      }
     </div>
   );
 }

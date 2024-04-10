@@ -1,4 +1,4 @@
-import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, Link } from "react-router-dom";
 
 import Todos from "./Todos";
 import Users from "./Users";
@@ -13,6 +13,9 @@ import ApiProductsListAutoLoad from "./ApiProductsListAutoLoad";
 
 import TodosApi from "./TodosApi";
 import Header from "./Header";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import RootElement from "./components/RootElement";
 
 let title = "state in react.js";
 let description = "Lorem ipsum dolor sit amet consectetur adipisicin";
@@ -20,36 +23,47 @@ let description = "Lorem ipsum dolor sit amet consectetur adipisicin";
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
-      element: (
-        <>
-          <Header />
-          <div>Home Page</div>
-        </>
-      ),
-    },
-    {
-      path: "/counter",
-      element: <Counter />,
-    },
-    {
-      path: "/todos-api",
-      element: <TodosApi />,
-    },
-    {
-      path: "/products-autoload",
-      element: <ApiProductsListAutoLoad />,
+      path: "",
+      element: <RootElement />,
+      children: [
+        {
+          path: "/",
+          element: <h1> homepage</h1>,
+        },
+        {
+          path: "about",
+          element: <h1> about page </h1>,
+        },
+        {
+          path: "products",
+          element: <ApiProductsListAutoLoad />,
+        },
+        {
+          path: "blogs",
+          children: [
+            {
+              path: "",
+              element: <h1> blogs page </h1>,
+            },
+            // {
+            //   path: "one",
+            //   element: <h1> blogs/one page </h1>,
+            // },
+            {
+              path: ":slug",
+              element: <h1> blogs:slug page </h1>,
+            },
+          ],
+        },
+      ],
     },
   ]);
 
   return (
     <div>
       <div>
-        
-
         <RouterProvider router={router} />
 
-        
         {/* <h1>{title}</h1>
         <p>{description}</p> */}
         {/* <Counter /> */}
