@@ -5,11 +5,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-let todos = ["html", "css", "js", "react"];
+let todos = ["html", "css", "js", "react"]; // simulating Database
 
 app.get("/api/todos", (req, res) => {
   res.send(todos);
 });
+
 app.post("/api/todos", (req, res) => {
   todos.push(req.body.title);
   res.send(todos);
