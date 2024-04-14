@@ -3,7 +3,9 @@ import Home from "./pages/Home";
 function App() {
   return (
     <>
-      <Home />
+      <div className="font-lato">
+        <Home />
+      </div>
     </>
   );
 }
