@@ -1,57 +1,15 @@
 import React from "react";
-import { CiMail } from "react-icons/ci";
-import { CiSearch } from "react-icons/ci";
-import Banner1 from "../assets/banner-1.png"
+import Banner1 from "../assets/banner-1.png";
+import Header from "../components/Header";
+import Banner from "../components/home/Banner";
 
 export default function Home() {
   return (
     <>
-      <header>
-        <div className="bg-primary">
-          <nav className=" font-josefin container  py-[14px] text-white flex justify-between">
-            <div>
-              <CiMail className="inline-block" /> mhhasanul@gmail.com
-            </div>
-            <div className="">
-              <span>login</span>
-              <span className="ml-4">cart</span>
-            </div>
-          </nav>
-        </div>
+      <Header />
+      <Banner />
 
-        <nav className="container flex  justify-between pt-[18px] pb-[12px] ">
-          <a
-            id="logo"
-            href=""
-            className="inline-block leading-auto text-[34px] font-josefin font-semibold text-primary-dark hover:text-secondary"
-          >
-            Hekto
-          </a>
-          <div className="flex gap-4">
-            <a href="" className="text-secondary">
-              home
-              <span className="text-[9px] ml-1">v</span>
-            </a>
-            <a href="" className="hover:text-secondary">
-              products
-            </a>
-          </div>
-          <form className=" flex">
-            <input
-              className="focus:border-secondary px-2 py-1
-              focus:transition-all
-             focus:outline-none border border-primary-light "
-              type="text"
-            />
-            <button className="bg-secondary px-3">
-              <CiSearch className="text-white" />
-            </button>
-          </form>
-        </nav>
-      </header>
-      {/* <img src="../assets/banner-1.png" /> */}
-      {/* <img src={Banner1} /> */}
-      <img src="/assets/banner-1.png" />
+      <div id="box" className="h-20 w-20 bg-purple-50 sm:bg-purple-300 md:bg-red-500  border-black mt-20"></div>
 
       {/* ctrl + shift + \ */}
       <p className="font-serif mb-8">
