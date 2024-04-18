@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { CiMail } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
 import { IoMenu } from "react-icons/io5";
+import CssPositions from "./CssPositions";
+
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  function toggleMenu() {
+    console.log("show menu");
+    setIsMenuOpen(!isMenuOpen);
+  }
   return (
     <header>
+      {/* <CssPositions/> */}
       <div className="bg-primary">
-        <nav className=" container flex  justify-between py-[14px] font-josefin text-white">
-          <div>
-            <CiMail className="inline-block" /> mhhasanul@gmail.com
+        <nav className=" py-[14px] text-center font-josefin text-white sm:container sm:flex sm:justify-between">
+          <div className="sm:flex sm:gap-4">
+            <p>
+              <CiMail className="inline-block" /> mhhasanul@gmail.com
+            </p>
+            <p>
+              <CiMail className="inline-block" /> 092345234
+            </p>
           </div>
           <div className="">
             <span>login</span>
@@ -22,11 +36,16 @@ export default function Header() {
           <a
             id="logo"
             href=""
-            className="leading-auto mb-0 mb-1 inline-block  border font-josefin text-[34px] font-semibold text-primary-dark hover:text-secondary"
+            className="leading-auto  inline-block  border font-josefin text-[34px] font-semibold text-primary-dark hover:text-secondary"
           >
             Hekto
           </a>
-          <div className="hidden  md:flex md:gap-4 ">
+          <div
+            className={`${isMenuOpen ? "translate-x-0" : "translate-x-full md:translate-x-0"} fixed bottom-0 right-0 top-0 flex w-[50%]   flex-col bg-orange-300   p-12 transition-all ease-linear md:static md:w-auto md:flex-row  md:gap-4 md:bg-transparent md:p-0`}
+          >
+            <button className="md:hidden" onClick={toggleMenu}>
+              close
+            </button>
             <a href="" className="text-secondary">
               home
               {/* <span className="text-[9px] ml-1">v</span> */}
@@ -44,7 +63,16 @@ export default function Header() {
               members
             </a>
           </div>
-          <IoMenu className="text-3xl md:hidden " />
+          {/* {isMenuOpen && (
+            <>
+              <ul>
+                <li>home</li>
+                <li>staic</li>
+              </ul>
+              <button onClick={toggleMenu}>close</button>
+            </>
+          )} */}
+          <IoMenu onClick={toggleMenu} className="text-3xl md:hidden " />
         </div>
 
         <form className="hidden lg:flex">
