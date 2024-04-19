@@ -41,7 +41,7 @@ export default function Header() {
             Hekto
           </a>
           <div
-            className={`${isMenuOpen ? "translate-x-0" : "translate-x-full md:translate-x-0"} fixed bottom-0 right-0 top-0 flex w-[50%]   flex-col bg-orange-300   p-12 transition-all ease-linear md:static md:w-auto md:flex-row  md:gap-4 md:bg-transparent md:p-0`}
+            className={`${isMenuOpen ? "translate-x-0" : "translate-x-full md:translate-x-0"} z-20 fixed bottom-0 right-0 top-0 flex w-[50%]   flex-col bg-orange-300   p-12 transition-all ease-linear md:static md:w-auto md:flex-row  md:gap-4 md:bg-transparent md:p-0`}
           >
             <button className="md:hidden" onClick={toggleMenu}>
               close
@@ -74,7 +74,7 @@ export default function Header() {
           )} */}
           <IoMenu onClick={toggleMenu} className="text-3xl md:hidden " />
         </div>
-
+          
         <form className="hidden lg:flex">
           <input
             className="border border-primary-light px-2
@@ -87,6 +87,13 @@ export default function Header() {
           </button>
         </form>
       </nav>
+      {
+        isMenuOpen
+      &&
+      <div onClick={toggleMenu} className="fixed top-0 right-0 bottom-0 left-0 bg-[rgba(0,0,0,0.5)] z-10">
+        </div>
+      }
+
     </header>
   );
 }
