@@ -31,6 +31,9 @@
         background-color: white;
     }
 } */
+body{
+  /* background-color: #333; */
+}
 
 .box {
   border: 1px solid;
@@ -38,6 +41,14 @@
   width: 100px;
   margin-bottom: 2rem;
 }
+
+/* css specificity score
+      tag< class < id < <style-tag> < !importnat
+*/
+/* .slick-next
+{
+  display: none !important;
+} */
 
 * {
   /* background-color: rgba(255,0,0,0.05); */

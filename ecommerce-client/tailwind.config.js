@@ -20,8 +20,8 @@ export default {
         sm: "576px", // mobile landscape mode
         md: "768px", // tablet
         lg: "1024px", // latptop without side numerical in keypad
-        xl: "1280px", // normal desktop
-        xxl: "1400px", // huge monitor
+        xl: "1280px", // normal desktop 188
+        xxl: "1400px", // huge monitor  210
       },
       backgroundImage: {
         'banner-1': "url('/assets/banner-1.png')",

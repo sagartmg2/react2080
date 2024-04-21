@@ -5,6 +5,7 @@ import Banner from "../components/home/Banner";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import Product from "../components/home/Product";
 
 export default function Home() {
   const settings = {
@@ -13,6 +14,7 @@ export default function Home() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: false,
   };
 
   let banners = [
@@ -42,8 +44,18 @@ export default function Home() {
     },
   ];
 
+  let products = [
+    {
+      
+    }
+  ]
+
   return (
     <>
+      {/* <div className="absolute box bg-orange-200 left-6 top-3 z-10"></div>
+    <div className="absolute box bg-black z-0  "></div>
+    <hr /> */}
+
       <Header />
       <Slider {...settings}>
         {banners.map((el) => {
@@ -62,44 +74,10 @@ export default function Home() {
         <Banner background={"bg-banner-3"} /> */}
       </Slider>
 
-      <div className="">
-        <div
-          id="box"
-          className="mt-20 h-20 w-20 border-black bg-purple-50  sm:bg-purple-300 md:bg-red-500"
-        ></div>
-
-        {/* ctrl + shift + \ */}
-        <p className="mb-8 font-serif">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab officiis
-          odit quia quos adipisci enim qui blanditiis dolore maiores
-          voluptatibus vitae, ea reiciendis id! Laboriosam provident numquam
-          sint nihil reiciendis?
-        </p>
-        <p className="mb-8 font-sans">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab officiis
-          odit quia quos adipisci enim qui blanditiis dolore maiores
-          voluptatibus vitae, ea reiciendis id! Laboriosam provident numquam
-          sint nihil reiciendis?
-        </p>
-        <p className="mb-8 font-mono">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab officiis
-          odit quia quos adipisci enim qui blanditiis dolore maiores
-          voluptatibus vitae, ea reiciendis id! Laboriosam provident numquam
-          sint nihil reiciendis?
-        </p>
-        <p className="mb-8 font-josefin">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab officiis
-          odit quia quos adipisci enim qui blanditiis dolore maiores
-          voluptatibus vitae, ea reiciendis id! Laboriosam provident numquam
-          sint nihil reiciendis?
-        </p>
-
-        <p className="mb-8 w-[150px] font-lato ">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab officiis
-          odit quia quos adipisci enim qui blanditiis dolore maiores
-          voluptatibus vitae, ea reiciendis id! Laboriosam provident numquam
-          sint nihil reiciendis?
-        </p>
+      <div className="container grid   gap-4 py-[116px] sm:py-[130px] md:grid-cols-2 md:py-[148px] lg:grid-cols-4 lg:py-[166px] xl:py-[188px] xxl:py-[210px]">
+        {[1, 2, 3, 4].map((el) => {
+          return <Product/>;
+        })}
       </div>
     </>
   );
