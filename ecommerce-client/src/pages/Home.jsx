@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner1 from "../assets/banner-1.png";
 import Header from "../components/Header";
 import Banner from "../components/home/Banner";
@@ -6,8 +6,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Product from "../components/home/Product";
+import axios from "axios";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function Home() {
+  const [products, setProducts] = useState([]);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -44,11 +49,17 @@ export default function Home() {
     },
   ];
 
-  let products = [
-    {
-      
-    }
-  ]
+  useEffect(() => {
+    axios
+      .get("https://ecommerce-sagartmg2.vercel.app/api/products/trending")
+      .then((res) => {
+        console.log(res);
+        setProducts(res.data.data);
+      })
+      .catch(err=>{
+
+      })
+  }, []);
 
   return (
     <>
@@ -56,8 +67,9 @@ export default function Home() {
     <div className="absolute box bg-black z-0  "></div>
     <hr /> */}
 
+      {/* {JSON.stringify(products,null,2)} */}
       <Header />
-      <Slider {...settings}>
+      <Slider {...settings} className="hidden">
         {banners.map((el) => {
           return (
             <Banner
@@ -74,9 +86,16 @@ export default function Home() {
         <Banner background={"bg-banner-3"} /> */}
       </Slider>
 
+      <div className="container grid grid-cols-4 gap-4">
+        <Skeleton className="h-[250px]" />
+        <Skeleton className="h-[250px]" />
+        <Skeleton className="h-[250px]" />
+        <Skeleton className="h-[250px]" />
+      </div>
+
       <div className="container grid   gap-4 py-[116px] sm:py-[130px] md:grid-cols-2 md:py-[148px] lg:grid-cols-4 lg:py-[166px] xl:py-[188px] xxl:py-[210px]">
-        {[1, 2, 3, 4].map((el) => {
-          return <Product/>;
+        {products.map((el) => {
+          return <Product name={el.name} price={el.price} image={el.image} />;
         })}
       </div>
     </>
