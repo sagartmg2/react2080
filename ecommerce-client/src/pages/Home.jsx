@@ -5,7 +5,7 @@ import Banner from "../components/home/Banner";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import Product from "../components/home/Product";
+import TrendingProduct from "../components/home/TrendingProduct";
 
 export default function Home() {
   const settings = {
@@ -44,11 +44,44 @@ export default function Home() {
     },
   ];
 
-  let products = [
+ let latestProducts = [
     {
-      
-    }
-  ]
+      image: "/assets/latestProduct1.png",
+      title: "Comfort Handy Craft",
+      currentPrice: "$200",
+      previousPrice: "$250",
+    },
+    {
+      image: "/assets/latestProduct2.png",
+      title: "Comfort Handy Craft 2",
+      currentPrice: "$200",
+      previousPrice: "$250",
+    },
+    {
+      image: "/assets/latestProduct3.png",
+      title: "Comfort Handy Craft 3",
+      currentPrice: "$200",
+      previousPrice: "$250",
+    },
+    {
+      image: "/assets/latestProduct4.png",
+      title: "Comfort Handy Craft 4",
+      currentPrice: "$200",
+      previousPrice: "$250",
+    },
+    {
+      image: "/assets/latestProduct5.png",
+      title: "Comfort Handy Craft 5",
+      currentPrice: "$200",
+      previousPrice: "$250",
+    },
+    {
+      image: "/assets/latestProduct6.png",
+      title: "Comfort Handy Craft 6",
+      currentPrice: "$200",
+      previousPrice: "$250",
+    },
+  ];
 
   return (
     <>
@@ -74,11 +107,37 @@ export default function Home() {
         <Banner background={"bg-banner-3"} /> */}
       </Slider>
 
-      <div className="container grid   gap-4 py-[116px] sm:py-[130px] md:grid-cols-2 md:py-[148px] lg:grid-cols-4 lg:py-[166px] xl:py-[188px] xxl:py-[210px]">
-        {[1, 2, 3, 4].map((el) => {
-          return <Product/>;
-        })}
-      </div>
+       <div className="container mb-14 mt-16">
+          <p className="text-center text-[23px] font-bold text-[#151875] md:text-[42px]">
+            Latest Products
+          </p>
+          <div className="mt-5 flex justify-center gap-2 text-sm md:gap-4 md:text-[18px]">
+            <a href="" className="hover:text-secondary">
+              New Arrival
+            </a>
+            <a href="" className="hover:text-secondary">
+              Best Seller
+            </a>
+            <a href="" className="hover:text-secondary">
+              Featured
+            </a>
+            <a href="" className="hover:text-secondary">
+              Special Offer
+            </a>
+          </div>
+          <div className="mt-[32px] grid justify-items-center gap-4 sm:grid-cols-2 md:mt-[58px] md:grid-cols-3">
+            {latestProducts.map((el) => {
+              return (
+                <TrendingProduct
+                  image={el.image}
+                  title={el.title}
+                  currentPrice={el.currentPrice}
+                  previousPrice={el.previousPrice}
+                />
+              );
+            })}
+          </div>
+        </div>
     </>
   );
 }
