@@ -12,6 +12,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const settings = {
     dots: true,
@@ -55,11 +56,10 @@ export default function Home() {
       .then((res) => {
         console.log(res);
         setProducts(res.data.data);
+        setIsLoading(false);
       })
-      .catch(err=>{
-
-      })
-  }, []);
+      .catch((err) => {});
+  }, []); // component did mount
 
   return (
     <>
@@ -86,17 +86,31 @@ export default function Home() {
         <Banner background={"bg-banner-3"} /> */}
       </Slider>
 
-      <div className="container grid grid-cols-4 gap-4">
-        <Skeleton className="h-[250px]" />
-        <Skeleton className="h-[250px]" />
-        <Skeleton className="h-[250px]" />
-        <Skeleton className="h-[250px]" />
-      </div>
-
       <div className="container grid   gap-4 py-[116px] sm:py-[130px] md:grid-cols-2 md:py-[148px] lg:grid-cols-4 lg:py-[166px] xl:py-[188px] xxl:py-[210px]">
         {products.map((el) => {
-          return <Product name={el.name} price={el.price} image={el.image} />;
+          return (
+            <Product
+              key={el._id}
+              name={el.name}
+              price={el.price}
+              image={el.image}
+            />
+          );
         })}
+
+        {isLoading && (
+          <>
+            <Skeleton className="h-[250px]" />
+            <Skeleton className="h-[250px]" />
+            <Skeleton className="h-[250px]" />
+            <Skeleton className="h-[250px]" />
+          </>
+        )}
+        {!isLoading && products.length == 0 && (
+          <>
+            <p>no products found</p>
+          </>
+        )}
       </div>
     </>
   );
