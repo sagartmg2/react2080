@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Banner1 from "../assets/banner-1.png";
-import Header from "../components/Header";
+import Header from "../components/common/Header";
 import Banner from "../components/home/Banner";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,6 +9,7 @@ import Product from "../components/home/Product";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import TrendingProduct from "../components/home/TrendingProduct";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -56,10 +57,49 @@ export default function Home() {
       .then((res) => {
         console.log(res);
         setProducts(res.data.data);
-        isLoading(false);
+        setIsLoading(false);
       })
       .catch((err) => {});
-  }, []);
+  }, []); // component did mount
+
+  let latestProducts = [
+    {
+      image: "/assets/latestProduct1.png",
+      title: "Comfort Handy Craft",
+      currentPrice: "$200",
+      previousPrice: "$250",
+    },
+    {
+      image: "/assets/latestProduct2.png",
+      title: "Comfort Handy Craft 2",
+      currentPrice: "$200",
+      previousPrice: "$250",
+    },
+    {
+      image: "/assets/latestProduct3.png",
+      title: "Comfort Handy Craft 3",
+      currentPrice: "$200",
+      previousPrice: "$250",
+    },
+    {
+      image: "/assets/latestProduct4.png",
+      title: "Comfort Handy Craft 4",
+      currentPrice: "$200",
+      previousPrice: "$250",
+    },
+    {
+      image: "/assets/latestProduct5.png",
+      title: "Comfort Handy Craft 5",
+      currentPrice: "$200",
+      previousPrice: "$250",
+    },
+    {
+      image: "/assets/latestProduct6.png",
+      title: "Comfort Handy Craft 6",
+      currentPrice: "$200",
+      previousPrice: "$250",
+    },
+  ];
 
   return (
     <>
@@ -68,7 +108,7 @@ export default function Home() {
     <hr /> */}
 
       {/* {JSON.stringify(products,null,2)} */}
-      <Header />
+      {/* <Header /> */}
       <Slider {...settings} className="hidden">
         {banners.map((el) => {
           return (
@@ -96,8 +136,61 @@ export default function Home() {
 
       <div className="container grid gap-4 py-[116px] sm:py-[130px] md:grid-cols-2 md:py-[148px] lg:grid-cols-4 lg:py-[166px] xl:py-[188px] xxl:py-[210px]">
         {products.map((el) => {
-          return <Product name={el.name} price={el.price} image={el.image} />;
+          return (
+            <Product
+              key={el._id}
+              _id={el._id}
+              name={el.name}
+              price={el.price}
+              image={el.image}
+            />
+          );
         })}
+
+        {isLoading && (
+          <>
+            <Skeleton className="h-[250px]" />
+            <Skeleton className="h-[250px]" />
+            <Skeleton className="h-[250px]" />
+            <Skeleton className="h-[250px]" />
+          </>
+        )}
+        {!isLoading && products.length == 0 && (
+          <>
+            <p>no products found</p>
+          </>
+        )}
+      </div>
+      <div className="container mb-14 mt-16">
+        <p className="text-center text-[23px] font-bold text-[#151875] md:text-[42px]">
+          Latest Products
+        </p>
+        <div className="mt-5 flex justify-center gap-2 text-sm md:gap-4 md:text-[18px]">
+          <a href="" className="hover:text-secondary">
+            New Arrival
+          </a>
+          <a href="" className="hover:text-secondary">
+            Best Seller
+          </a>
+          <a href="" className="hover:text-secondary">
+            Featured
+          </a>
+          <a href="" className="hover:text-secondary">
+            Special Offer
+          </a>
+        </div>
+        <div className="mt-[32px] grid justify-items-center gap-4 sm:grid-cols-2 md:mt-[58px] md:grid-cols-3">
+          {latestProducts.map((el) => {
+            return (
+              <TrendingProduct
+                image={el.image}
+                title={el.title}
+                currentPrice={el.currentPrice}
+                previousPrice={el.previousPrice}
+              />
+            );
+          })}
+        </div>
       </div>
     </>
   );

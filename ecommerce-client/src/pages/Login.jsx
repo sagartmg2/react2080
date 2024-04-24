@@ -5,8 +5,8 @@ export default function () {
   return (
     <>
       {/* Top Div with text */}
-      <div className="container relative  bg-[#F6F5FF]">
-        <div className=" mb-8 py-[39px] sm:py-[47px] md:py-[57px] lg:py-[68px] xl:py-[82px] xxl:py-[98px]">
+      <div className=" relative  bg-[#F6F5FF]">
+        <div className="container mb-8 py-[39px] sm:py-[47px] md:py-[57px] lg:py-[68px] xl:py-[82px] xxl:py-[98px]">
           {/* text */}
           <h1 className=" font-Josefin text-[14px] sm:text-[14px] md:text-[17px] lg:text-[20px] xl:text-[25px] xxl:text-[36px]">
             My Account
