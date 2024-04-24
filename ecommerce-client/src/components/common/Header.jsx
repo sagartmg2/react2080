@@ -49,13 +49,13 @@ export default function Header() {
             <button className="md:hidden" onClick={toggleMenu}>
               close
             </button>
-            <a href="" className="text-secondary">
+            <Link to="/" className="text-secondary">
               home
               {/* <span className="text-[9px] ml-1">v</span> */}
-            </a>
-            <a href="" className="hover:text-secondary">
+            </Link>
+            <Link to="/products" className="hover:text-secondary">
               products
-            </a>
+            </Link>
             <a href="" className="hover:text-secondary">
               pages
             </a>

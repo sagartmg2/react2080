@@ -61,8 +61,8 @@ export default function Home() {
       })
       .catch((err) => {});
   }, []); // component did mount
-  
- let latestProducts = [
+
+  let latestProducts = [
     {
       image: "/assets/latestProduct1.png",
       title: "Comfort Handy Craft",
@@ -131,6 +131,7 @@ export default function Home() {
           return (
             <Product
               key={el._id}
+              _id={el._id}
               name={el.name}
               price={el.price}
               image={el.image}
@@ -152,37 +153,37 @@ export default function Home() {
           </>
         )}
       </div>
-       <div className="container mb-14 mt-16">
-          <p className="text-center text-[23px] font-bold text-[#151875] md:text-[42px]">
-            Latest Products
-          </p>
-          <div className="mt-5 flex justify-center gap-2 text-sm md:gap-4 md:text-[18px]">
-            <a href="" className="hover:text-secondary">
-              New Arrival
-            </a>
-            <a href="" className="hover:text-secondary">
-              Best Seller
-            </a>
-            <a href="" className="hover:text-secondary">
-              Featured
-            </a>
-            <a href="" className="hover:text-secondary">
-              Special Offer
-            </a>
-          </div>
-          <div className="mt-[32px] grid justify-items-center gap-4 sm:grid-cols-2 md:mt-[58px] md:grid-cols-3">
-            {latestProducts.map((el) => {
-              return (
-                <TrendingProduct
-                  image={el.image}
-                  title={el.title}
-                  currentPrice={el.currentPrice}
-                  previousPrice={el.previousPrice}
-                />
-              );
-            })}
-          </div>
+      <div className="container mb-14 mt-16">
+        <p className="text-center text-[23px] font-bold text-[#151875] md:text-[42px]">
+          Latest Products
+        </p>
+        <div className="mt-5 flex justify-center gap-2 text-sm md:gap-4 md:text-[18px]">
+          <a href="" className="hover:text-secondary">
+            New Arrival
+          </a>
+          <a href="" className="hover:text-secondary">
+            Best Seller
+          </a>
+          <a href="" className="hover:text-secondary">
+            Featured
+          </a>
+          <a href="" className="hover:text-secondary">
+            Special Offer
+          </a>
         </div>
+        <div className="mt-[32px] grid justify-items-center gap-4 sm:grid-cols-2 md:mt-[58px] md:grid-cols-3">
+          {latestProducts.map((el) => {
+            return (
+              <TrendingProduct
+                image={el.image}
+                title={el.title}
+                currentPrice={el.currentPrice}
+                previousPrice={el.previousPrice}
+              />
+            );
+          })}
+        </div>
+      </div>
     </>
   );
 }
