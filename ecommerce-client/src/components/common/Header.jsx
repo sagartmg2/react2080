@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { CiMail } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
 import { IoMenu } from "react-icons/io5";
-import CssPositions from "./CssPositions";
+import CssPositions from "../CssPositions";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,7 +26,9 @@ export default function Header() {
             </p>
           </div>
           <div className="">
-            <span>login</span>
+            <span>
+              <Link to={"/login"}> login </Link>
+            </span>
             <span className="ml-4">cart</span>
           </div>
         </nav>
@@ -33,15 +36,15 @@ export default function Header() {
 
       <nav className="container justify-between   pb-[12px] pt-[18px] sm:flex ">
         <div className="flex w-full items-center justify-between lg:w-auto lg:gap-[90px]">
-          <a
+          <Link
             id="logo"
-            href=""
+            to="/"
             className="leading-auto  inline-block  border font-josefin text-[34px] font-semibold text-primary-dark hover:text-secondary"
           >
             Hekto
-          </a>
+          </Link>
           <div
-            className={`${isMenuOpen ? "translate-x-0" : "translate-x-full md:translate-x-0"} z-20 fixed bottom-0 right-0 top-0 flex w-[50%]   flex-col bg-orange-300   p-12 transition-all ease-linear md:static md:w-auto md:flex-row  md:gap-4 md:bg-transparent md:p-0`}
+            className={`${isMenuOpen ? "translate-x-0" : "translate-x-full md:translate-x-0"} fixed bottom-0 right-0 top-0 z-20 flex w-[50%]   flex-col bg-orange-300   p-12 transition-all ease-linear md:static md:w-auto md:flex-row  md:gap-4 md:bg-transparent md:p-0`}
           >
             <button className="md:hidden" onClick={toggleMenu}>
               close
@@ -74,7 +77,7 @@ export default function Header() {
           )} */}
           <IoMenu onClick={toggleMenu} className="text-3xl md:hidden " />
         </div>
-          
+
         <form className="hidden lg:flex">
           <input
             className="border border-primary-light px-2
@@ -87,13 +90,12 @@ export default function Header() {
           </button>
         </form>
       </nav>
-      {
-        isMenuOpen
-      &&
-      <div onClick={toggleMenu} className="fixed top-0 right-0 bottom-0 left-0 bg-[rgba(0,0,0,0.5)] z-10">
-        </div>
-      }
-
+      {isMenuOpen && (
+        <div
+          onClick={toggleMenu}
+          className="fixed bottom-0 left-0 right-0 top-0 z-10 bg-[rgba(0,0,0,0.5)]"
+        ></div>
+      )}
     </header>
   );
 }

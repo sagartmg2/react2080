@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Banner1 from "../assets/banner-1.png";
-import Header from "../components/Header";
+import Header from "../components/common/Header";
 import Banner from "../components/home/Banner";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -68,7 +68,7 @@ export default function Home() {
     <hr /> */}
 
       {/* {JSON.stringify(products,null,2)} */}
-      <Header />
+      {/* <Header /> */}
       <Slider {...settings} className="hidden">
         {banners.map((el) => {
           return (
