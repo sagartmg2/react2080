@@ -9,6 +9,7 @@ import Product from "../components/home/Product";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { TrendingProduct } from "../components/home/TrendingProduct";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -111,7 +112,9 @@ export default function Home() {
             <p>no products found</p>
           </>
         )}
+
       </div>
+      <TrendingProduct />
     </>
   );
 }
