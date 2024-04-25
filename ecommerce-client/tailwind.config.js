@@ -14,6 +14,8 @@ export default {
         "primary-dark": "#0D0E43",
         "primary-light": "#E7E6EF",
         secondary: "#FB2E86",
+        "secondary-dark": "#b0205e",
+        "secondary-light": "#fc6daa",
         "gray-light":"#9096B2"
       },
       screens: {

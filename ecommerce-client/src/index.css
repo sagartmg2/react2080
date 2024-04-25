@@ -14,10 +14,16 @@
     @apply /*  using arbitary values; line-height:normal  equivalent  of figma line-height:auto */ leading-[normal];
   }
 
-  .btn{
-    @apply bg-secondary px-8 py-4 rounded-sm text-white
+  .btn {
+    @apply hover:bg-secondary-dark rounded-sm bg-secondary px-8 py-4 text-white disabled:cursor-not-allowed  disabled:bg-gray-300;
   }
 
+  .form-group {
+    @apply mb-3;
+  }
+  .form-control {
+    @apply border-gray-light w-full rounded-[2px] border bg-transparent px-4 py-2  focus:border-secondary focus:shadow-md focus:outline-none;
+  }
 }
 
 /* mobile first  */
@@ -31,7 +37,7 @@
         background-color: white;
     }
 } */
-body{
+body {
   /* background-color: #333; */
 }
 
