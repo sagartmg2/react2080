@@ -121,12 +121,20 @@ export default function Home() {
             />
           );
         })}
-        {/* <Banner background={"bg-banner-1"} />
+        {/* <Banner background={"bg-banner-1"} />   
         <Banner background={"bg-banner-2"} />
         <Banner background={"bg-banner-3"} /> */}
       </Slider>
+      {/* {isLoading && (
+          <>
+            <Skeleton className="h-[250px]" />
+            <Skeleton className="h-[250px]" />
+            <Skeleton className="h-[250px]" />
+            <Skeleton className="h-[250px]" />
+          </>
+        )}, */}
 
-      <div className="container grid   gap-4 py-[116px] sm:py-[130px] md:grid-cols-2 md:py-[148px] lg:grid-cols-4 lg:py-[166px] xl:py-[188px] xxl:py-[210px]">
+      <div className="container grid gap-4 py-[116px] sm:py-[130px] md:grid-cols-2 md:py-[148px] lg:grid-cols-4 lg:py-[166px] xl:py-[188px] xxl:py-[210px]">
         {products.map((el) => {
           return (
             <Product
