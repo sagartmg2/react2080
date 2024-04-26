@@ -46,7 +46,7 @@ export default function Login() {
             />
             <input
               className="border-gray-light h-[36px] w-full rounded-[2px] border pl-[13px] focus:shadow-[0px_6px_25px_0px_rgba(0,0,0,0.4)] focus:outline-none sm:h-[43px] md:h-[52px]"
-              type="password"
+              type={false ?"text":"password"}
               placeholder="Password"
             />
           </div>

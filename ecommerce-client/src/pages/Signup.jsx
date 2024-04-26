@@ -4,14 +4,16 @@ import BreadCrumb from "../components/common/BreadCrumb";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ErrorMessage from "../components/common/ErrorMessage";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
-  // const [errors, setErrors] = useState([
-  //   { param: "name", message: "requried" },
-  // ]);
+
+  const navigate = useNavigate()
+
   const [formError, setFormError] = useState({
-    name: "requried",
-    email: "already used",
+    // name: "requried",
+    // email: "already used",
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -19,6 +21,7 @@ export default function Signup() {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
+    setFormError({})
     axios
       .post("https://ecommerce-sagartmg2.vercel.app/api/users/signup", {
         name: e.target.name.value,
@@ -29,9 +32,26 @@ export default function Signup() {
       .then((res) => {
         toast.success("success");
         setIsLoading(false);
+        navigate('/login')
       })
       .catch((err) => {
-        toast.error("bad request");
+        console.log(err);
+
+        if (err.response?.status === 400) {
+          console.log(err.response.data.errors);
+          toast.error("bad request");
+
+          let errorsObj = {};
+
+          err.response.data.errors.forEach((element) => {
+            errorsObj[element.param] = element.msg;
+          });
+
+          setFormError(errorsObj);
+        }else{
+          toast.error("someting went wrong. try agin later.")
+        }
+
         setIsLoading(false);
       });
   }
@@ -58,6 +78,7 @@ export default function Signup() {
                 type="text"
                 placeholder="Name"
               />
+              <ErrorMessage msg={formError.name} />
             </div>
             <div className="form-group">
               <input
@@ -66,7 +87,7 @@ export default function Signup() {
                 name="email"
                 placeholder="Email Address"
               />
-              <span className="text-sm text-red-500">{formError.email}</span>
+              <ErrorMessage msg={formError.email} />
             </div>
             <div className="form-group">
               <input
@@ -75,6 +96,7 @@ export default function Signup() {
                 type="password"
                 placeholder="Password"
               />
+              <ErrorMessage msg={formError.password} />
             </div>
             <div className="form-group">
               <select
@@ -87,6 +109,7 @@ export default function Signup() {
                 <option value="seller">seller</option>
                 <option value="buyer">buyer</option>
               </select>
+              <ErrorMessage msg={formError.role} />
             </div>
             <a href="/forgetPassword" className="text-sm text-[#9096B2]">
               Forget Your Password ?
