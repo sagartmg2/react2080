@@ -15,14 +15,14 @@
   }
 
   .btn {
-    @apply hover:bg-secondary-dark rounded-sm bg-secondary px-8 py-4 text-white disabled:cursor-not-allowed  disabled:bg-gray-300;
+    @apply rounded-sm bg-secondary px-8 py-4 text-white hover:bg-secondary-dark disabled:cursor-not-allowed  disabled:bg-gray-300;
   }
 
   .form-group {
     @apply mb-3;
   }
   .form-control {
-    @apply border-gray-light w-full rounded-[2px] border bg-transparent px-4 py-2  focus:border-secondary focus:shadow-md focus:outline-none;
+    @apply w-full rounded-[2px] border border-gray-light bg-transparent px-4 py-2  focus:border-secondary focus:shadow-md focus:outline-none;
   }
 }
 
