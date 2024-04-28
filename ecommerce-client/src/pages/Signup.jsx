@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import footerImg from "/assets/loginFooter.png";
 import BreadCrumb from "../components/common/BreadCrumb";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import ErrorMessage from "../components/common/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 
-export default function Signup() {
-
-  const navigate = useNavigate()
+export default function Signup({setUser}) {
+  
+  const navigate = useNavigate();
 
   const [formError, setFormError] = useState({
     // name: "requried",
@@ -21,7 +20,7 @@ export default function Signup() {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    setFormError({})
+    setFormError({});
     axios
       .post("https://ecommerce-sagartmg2.vercel.app/api/users/signup", {
         name: e.target.name.value,
@@ -32,7 +31,7 @@ export default function Signup() {
       .then((res) => {
         toast.success("success");
         setIsLoading(false);
-        navigate('/login')
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err);
@@ -41,15 +40,18 @@ export default function Signup() {
           console.log(err.response.data.errors);
           toast.error("bad request");
 
-          let errorsObj = {};
+          let errorsObj = {
+            // name:"required: static error",
+            // email:"required: static error"
+          };
 
           err.response.data.errors.forEach((element) => {
             errorsObj[element.param] = element.msg;
           });
 
           setFormError(errorsObj);
-        }else{
-          toast.error("someting went wrong. try agin later.")
+        } else {
+          toast.error("someting went wrong. try agin later.");
         }
 
         setIsLoading(false);
@@ -69,7 +71,6 @@ export default function Signup() {
               Please login using account detail bellow.
             </p>
           </div>
-
           <form className="" onSubmit={handleSubmit}>
             <div className="form-group">
               <input
@@ -128,7 +129,6 @@ export default function Signup() {
         </div>
       </div>
       <img src={footerImg} className="container my-[40px]" />
-      <ToastContainer theme="colored" />
     </>
   );
 }

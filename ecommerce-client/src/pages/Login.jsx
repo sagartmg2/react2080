@@ -1,11 +1,48 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 import footerImg from "/assets/loginFooter.png";
 
-export default function Login() {
+export default function Login({setUser}) {
+
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "b@b.com",
+    password: "password",
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    axios
+      .post("https://ecommerce-sagartmg2.vercel.app/api/users/login", {
+        email: formData.email,
+        password: formData.password,
+      })
+      .then((res) => {
+        toast.success("success");
+        // navigate("/");
+        setUser(res.data.user)
+      })
+      .catch((err) => {
+        console.log(err);
+
+        if (err.response?.status === 400) {
+          console.log(err.response.data.errors);
+          toast.error("bad request");
+        } else if (err.response?.status === 401) {
+          toast.error(err.response.data.msg);
+        } else {
+          toast.error("seomthing went wrong.try again later..");
+        }
+      });
+  }
   return (
     <>
       {/* Top Div with text */}
+      {/* {
+        JSON.stringify(user)
+      } */}
       <div className="  bg-[#F6F5FF]">
         <div className="container relative">
           <div className=" mb-8 py-[39px] sm:py-[47px] md:py-[57px] lg:py-[68px] xl:py-[82px] xxl:py-[98px]">
@@ -37,26 +74,34 @@ export default function Login() {
               Please login using account detail bellow.
             </p>
           </div>
+          <form className="" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <input
+                className="form-control"
+                type="email"
+                name="email"
+                onChange={() =>{}}
+                value={formData.email}
+                placeholder="Email Address"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                name="password"
+                className="form-control"
+                type="password"
+                value={formData.password}
+                placeholder="Password"
+              />
+            </div>
+            <a href="/forgetPassword" className="text-sm text-[#9096B2]">
+              Forget Your Password ?
+            </a>
+            <button type="submit" className="btn w-full">
+              sign in
+            </button>
+          </form>
 
-          <div className="space-y-4 ">
-            <input
-              className="border-gray-light h-[36px] w-full rounded-[2px] border pl-[13px] focus:shadow-[0px_6px_25px_0px_rgba(0,0,0,0.4)] focus:outline-none sm:h-[43px] md:h-[52px]"
-              type="email"
-              placeholder="Email Address"
-            />
-            <input
-              className="border-gray-light h-[36px] w-full rounded-[2px] border pl-[13px] focus:shadow-[0px_6px_25px_0px_rgba(0,0,0,0.4)] focus:outline-none sm:h-[43px] md:h-[52px]"
-              type={false ?"text":"password"}
-              placeholder="Password"
-            />
-          </div>
-
-          <a href="/forgetPassword" className="text-[#9096B2]">
-            Forget Your Password
-          </a>
-          <button className="hover:bg-secondary-dark w-full rounded-[3px] bg-secondary py-[10px] text-white hover:shadow-[0px_3px_25px_0px_rgba(0,0,0,0.15)]">
-            Sign in
-          </button>
           <p className="text-gray-light">
             Don’t have an Account?
             <a href="/Signup" className="text-[#558cf3]">

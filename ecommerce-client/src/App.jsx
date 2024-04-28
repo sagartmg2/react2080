@@ -1,3 +1,4 @@
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -11,48 +12,53 @@ import RootComponent from "./components/common/RootComponent";
 import Products from "./pages/products/Products";
 import Slug from "./pages/products/Slug";
 import Signup from "./pages/Signup";
-
-const router = createBrowserRouter([
-  {
-    path: "",
-    element: <RootComponent />,
-    children: [
-      {
-        path:"",
-        element: <Home />,
-      },
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "signup",
-        element: <Signup/>,
-      },
-      {
-        path: "products",
-        children:[
-          {
-            path: "",
-            element: <Products />,
-          },
-          {
-            path: ":slug",
-            element: <Slug />,
-          },
-        ]
-        
-      },
-    ],
-  },
-]);
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  const router = createBrowserRouter([
+    {
+      path: "",
+      element: <RootComponent user={user} setUser={setUser} />,
+      children: [
+        {
+          path: "",
+          element: <Home />,
+        },
+        {
+          path: "login",
+          element: <Login setUser={setUser}  />,
+        },
+        {
+          path: "signup",
+          element: <Signup  />,
+        },
+        {
+          path: "products",
+          children: [
+            {
+              path: "",
+              element: <Products />,
+            },
+            {
+              path: ":slug",
+              element: <Slug />,
+            },
+          ],
+        },
+      ],
+    },
+  ]);
+
   return (
     <>
-    {/* <Signup/> */}
+      {/* <Signup/> */}
       <div className="font-lato">
-        <RouterProvider router={router} />
+        <RouterProvider customText={"customtext"} router={router} />
+        <ToastContainer theme="colored" />
       </div>
     </>
   );
