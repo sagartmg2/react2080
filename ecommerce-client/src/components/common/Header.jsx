@@ -5,8 +5,13 @@ import { IoMenu } from "react-icons/io5";
 import CssPositions from "../CssPositions";
 import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, setReduxUser } from "../../redux/slice/userSlice";
 
 export default function Header() {
+  let user = useSelector((store) => store.user.value);
+  let dispatch = useDispatch()  
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function toggleMenu() {
@@ -27,9 +32,17 @@ export default function Header() {
             </p>
           </div>
           <div className="">
-            <span>
+            {user ? (
+              <>
+                {JSON.stringify(user?.name)}
+                <span onClick={() =>{
+                  // dispatch(setReduxUser(null))
+                  dispatch(logout())
+                }}>logout</span>
+              </>
+            ) : (
               <Link to={"/login"}> login </Link>
-            </span>
+            )}
             <span className="ml-4">cart</span>
           </div>
         </nav>
