@@ -54,6 +54,7 @@ function App() {
       <div className="font-lato">
         <RouterProvider router={router} />
       </div>
+      
     </>
   );
 }
