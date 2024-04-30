@@ -9,7 +9,7 @@ export const userSlice = createSlice({
   reducers: {
     setReduxUser: (state, action) => {
       console.log("change redux store.");
-      state.value = action.payload;
+      state.value = action.payload
     },
     logout: (state, action) => {
       state.value = null;

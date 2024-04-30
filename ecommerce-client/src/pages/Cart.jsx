@@ -1,19 +1,28 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { resetCart } from "../redux/slice/cartSlice";
 
 export default function Cart() {
-  const dispath = useDispatch();
-  let cartItem = useSelector((reduxStore) => reduxStore.cart.value);
-
+  let cartItems = useSelector((reduxStore) => reduxStore.cart.value);
+  const dispatch = useDispatch();
   return (
     <>
-      <div>Shopping Cart List</div>
-
-      {JSON.stringify(cartItem)}
-      <ul>
+      <div className="container">
+        <div>List of Cart times</div>
         {/* <li>one</li>
         <li>two</li> */}
-      </ul>
+        {JSON.stringify(cartItems)}
+        <br />
+        <br />
+        <button
+          className="btn"
+          onClick={() => {
+            dispatch(resetCart());
+          }}
+        >
+          clear all items
+        </button>
+      </div>
     </>
   );
 }

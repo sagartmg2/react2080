@@ -3,18 +3,37 @@ import { createSlice } from "@reduxjs/toolkit";
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    value: [], // to simulate as not logged in
-    // value: {"name":"ram"}
+    value: [
+    //   {
+    //     _id: "234234",
+    //     name: "watch",
+    //     price: "500",
+    //     quanity: 2,
+    //   },
+    ],
+    // value:["one","two","three"]
   },
   reducers: {
-    addCartItems: (state, action) => {
-      state.value.push(action.payload)
-      console.log(`added ${action.payload} in cart.`);
+    addCartItem: (state, action) => {
+      let product = action.payload;
+      let { name, _id, price } = product;
+
+      /* check if that _id already exists   */
+      
+      state.value.push({
+        quanity: 1,
+        name,
+        _id,
+        price,
+      });
+    },
+    resetCart: (state, action) => {
+      state.value = [];
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addCartItems } = cartSlice.actions;
+export const { addCartItem, resetCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

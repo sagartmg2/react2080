@@ -1,13 +1,12 @@
 import React from "react";
 import { FaCartPlus } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addCartItems } from "../../redux/slice/cartSlice";
+import { Link, useNavigate } from "react-router-dom";
+import { addCartItem } from "../../redux/slice/cartSlice";
 
 export default function Product(props) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  let dispatch = useDispatch();
-
   console.log(props._id);
 
   return (
@@ -20,11 +19,11 @@ export default function Product(props) {
       <div
         onClick={(e) => {
           e.stopPropagation();
-          dispatch(addCartItems(props.name));
+          dispatch(addCartItem(props));
         }}
         className=" absolute left-[11px] top-[11px] hidden h-[30px] w-[30px] items-center justify-center rounded-full border border-primary transition-all group-hover:flex"
       >
-        <FaCartPlus className="text-primary hover:text-secondary" />
+        <FaCartPlus className="text-primary" />
       </div>
       <img
         src={props.image}
