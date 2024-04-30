@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
-import footerImg from "/assets/loginFooter.png";
 import { setReduxUser } from "../redux/slice/userSlice";
 import { useDispatch } from "react-redux";
+import axios from "axios";
+import footerImg from "/assets/loginFooter.png";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -29,7 +29,6 @@ export default function Login() {
   function handleSubmit(e) {
     e.preventDefault();
 
-
     axios
       .post("https://ecommerce-sagartmg2.vercel.app/api/users/login", {
         email: formData.email,
@@ -37,10 +36,9 @@ export default function Login() {
       })
       .then((res) => {
         toast.success("success");
-        // navigate("/");
+        navigate("/");
         console.log("success");
-    dispatch(setReduxUser(res.data.user)); // change redux store value
-
+        dispatch(setReduxUser(res.data.user)); // change redux store value
       })
       .catch((err) => {
         console.log(err);
