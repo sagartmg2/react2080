@@ -10,6 +10,9 @@ import { logout, setReduxUser } from "../../redux/slice/userSlice";
 
 export default function Header() {
   let user = useSelector((store) => store.user.value);
+  let cartItems = useSelector((store) => store.cart.value);
+
+
   let dispatch = useDispatch()  
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,7 +46,7 @@ export default function Header() {
             ) : (
               <Link to={"/login"}> login </Link>
             )}
-            <span className="ml-4">cart</span>
+            <Link to={"/cart"}> cart( {cartItems.length} )  </Link>
           </div>
         </nav>
       </div>
@@ -119,3 +122,7 @@ export default function Header() {
     </header>
   );
 }
+
+
+export const navlinks = [""]
+export const socialMedias = [""]

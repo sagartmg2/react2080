@@ -11,6 +11,7 @@ import RootComponent from "./components/common/RootComponent";
 import Products from "./pages/products/Products";
 import Slug from "./pages/products/Slug";
 import Signup from "./pages/Signup";
+import Cart from "./pages/Cart";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "signup",
         element: <Signup/>,
+      },
+      {
+        path: "cart",
+        element: <Cart/>,
       },
       {
         path: "products",

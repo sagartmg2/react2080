@@ -2,9 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BreadCrumb from "../../components/common/BreadCrumb";
+import { addCartItem } from "../../redux/slice/cartSlice";
+import { useDispatch } from "react-redux";
 
 export default function Slug() {
   const [product, setProduct] = useState({});
+  const dispatch = useDispatch();
 
   const params = useParams();
 
@@ -17,9 +20,22 @@ export default function Slug() {
   }, []);
 
   return (
-    <div>
-      <BreadCrumb/>
-      {JSON.stringify(product)}
-    </div>
+    <>
+      <BreadCrumb />
+      <div className="container">
+        {/* {JSON.stringify(product)} */}
+        <p className="text-4xl">{product.name}</p>
+        <br />
+        <br />
+        <button
+          className="btn"
+          onClick={() => {
+            dispatch(addCartItem(product));
+          }}
+        >
+          add to cart
+        </button>
+      </div>
+    </>
   );
 }

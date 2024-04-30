@@ -29,7 +29,6 @@ export default function Login() {
   function handleSubmit(e) {
     e.preventDefault();
 
-
     axios
       .post("https://ecommerce-sagartmg2.vercel.app/api/users/login", {
         email: formData.email,
@@ -39,8 +38,7 @@ export default function Login() {
         toast.success("success");
         // navigate("/");
         console.log("success");
-    dispatch(setReduxUser(res.data.user)); // change redux store value
-
+        dispatch(setReduxUser(res.data.user)); // change redux store value
       })
       .catch((err) => {
         console.log(err);
