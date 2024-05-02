@@ -40,6 +40,8 @@ export default function Login() {
         // navigate("/");
         console.log("success");
         dispatch(setReduxUser(res.data.user)); // change redux store value
+
+        localStorage.setItem("token", res.data.access_token);
       })
       .catch((err) => {
         console.log(err);
