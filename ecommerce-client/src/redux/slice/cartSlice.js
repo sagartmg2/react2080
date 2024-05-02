@@ -4,27 +4,28 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState: {
     value: [
-    //   {
-    //     _id: "234234",
-    //     name: "watch",
-    //     price: "500",
-    //     quanity: 2,
-    //   },
+      //   {
+      //     _id: "234234",
+      //     name: "watch",
+      //     price: "500",
+      //     quanity: 2,
+      //   },
     ],
     // value:["one","two","three"]
   },
   reducers: {
     addCartItem: (state, action) => {
       let product = action.payload;
-      let { name, _id, price } = product;
+      let { name, _id, price, image } = product;
 
       /* check if that _id already exists   */
-      
+
       state.value.push({
-        quanity: 1,
+        quantity: 1,
         name,
         _id,
         price,
+        image,
       });
     },
     resetCart: (state, action) => {
