@@ -8,8 +8,7 @@ import ErrorMessage from "../components/common/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [formError, setFormError] = useState({
     // name: "requried",
@@ -21,7 +20,7 @@ export default function Signup() {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    setFormError({})
+    setFormError({});
     axios
       .post("https://ecommerce-sagartmg2.vercel.app/api/users/signup", {
         name: e.target.name.value,
@@ -32,7 +31,7 @@ export default function Signup() {
       .then((res) => {
         toast.success("success");
         setIsLoading(false);
-        navigate('/login')
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err);
@@ -48,8 +47,8 @@ export default function Signup() {
           });
 
           setFormError(errorsObj);
-        }else{
-          toast.error("someting went wrong. try agin later.")
+        } else {
+          toast.error("someting went wrong. try agin later.");
         }
 
         setIsLoading(false);
@@ -58,7 +57,7 @@ export default function Signup() {
 
   return (
     <>
-      <BreadCrumb />
+      <BreadCrumb title="Signup" />
       <div className="mx-auto mt-[67px] flex w-[302px] items-center justify-center p-[28px] shadow-lg md:w-[544px]">
         <div className="space-y-2 p-[24px] font-lato  ">
           <div>

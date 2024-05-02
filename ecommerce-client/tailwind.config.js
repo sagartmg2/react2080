@@ -16,7 +16,7 @@ export default {
         secondary: "#FB2E86",
         "secondary-dark": "#b0205e",
         "secondary-light": "#fc6daa",
-        "gray-light":"#9096B2"
+        "gray-light": "#9096B2",
       },
       screens: {
         /* we should start with mobile. */
@@ -27,10 +27,13 @@ export default {
         xxl: "1400px", // huge monitor  210
       },
       backgroundImage: {
-        'banner-1': "url('/assets/banner-1.png')",
-        'banner-2': "url('/assets/banner-2.png')",
-        'banner-3': "url('/assets/banner-3.png')",
-      }
+        "banner-1": "url('/assets/banner-1.png')",
+        "banner-2": "url('/assets/banner-2.png')",
+        "banner-3": "url('/assets/banner-3.png')",
+      },
+      listStyleImage: {
+        arrow: 'url("/assets/listArrow.png")',
+      },
     },
   },
   plugins: [],
