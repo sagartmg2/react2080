@@ -83,6 +83,12 @@ export default function Header() {
             <Link to="/products" className="hover:text-secondary">
               products
             </Link>
+            <Link to="/sellers/products" className="hover:text-secondary">
+              seller-products
+            </Link>
+            <Link to="/sellers/products/add" className="hover:text-secondary">
+              add products
+            </Link>
             <a href="" className="hover:text-secondary">
               pages
             </a>
