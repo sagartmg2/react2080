@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import { setReduxUser } from "../redux/slice/userSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import footerImg from "/assets/loginFooter.png";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -126,7 +125,6 @@ export default function Login() {
           </p>
         </div>
       </div>
-      <img src={footerImg} className="container my-[40px]" />
     </>
   );
 }

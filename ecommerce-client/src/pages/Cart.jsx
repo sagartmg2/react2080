@@ -9,11 +9,20 @@ export default function Cart() {
     <>
       <div className="container">
         <div>List of Cart times</div>
-        {/* <li>one</li>
-        <li>two</li> */}
-        {JSON.stringify(cartItems)}
-        <br />
-        <br />
+        <table className="w-full">
+          <thead>
+            <tr>
+              <th className="border px-4 py-2">Name</th>
+              <th className="border px-4 py-2">Price</th>
+              <th className="border px-4 py-2">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <th>{}</th>
+            <th>1000</th>
+            <th>2</th>
+          </tbody>
+        </table>
         <button
           className="btn"
           onClick={() => {
