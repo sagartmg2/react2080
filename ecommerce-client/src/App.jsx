@@ -19,6 +19,8 @@ import { setReduxUser } from "./redux/slice/userSlice";
 import { useState } from "react";
 import SellerProducts from "./pages/seller/Products";
 import AddProducts from "./pages/seller/AddProducts";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { BUYER, SELLER } from "./constants/role";
 
 const router = createBrowserRouter([
   {
@@ -39,10 +41,17 @@ const router = createBrowserRouter([
       },
       {
         path: "cart",
-        element: <Cart />,
+        // element: <ProtectedRoute role={BUYER}/>,
+        children:[
+          {
+            path: "",
+            element: <Cart/>,
+          },
+        ]
       },
       {
         path: "sellers",
+        element:<ProtectedRoute role={SELLER}/>,
         children: [
           {
             path: "products",
@@ -72,10 +81,14 @@ const router = createBrowserRouter([
           },
           {
             path: ":slug",
-            element: <Slug />,
           },
         ],
       },
+      {
+        path:"*",
+        element: <h1>Not found</h1>,
+
+      }
     ],
   },
 ]);

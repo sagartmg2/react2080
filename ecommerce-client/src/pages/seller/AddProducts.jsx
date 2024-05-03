@@ -2,35 +2,37 @@ import axios from "axios";
 import React, { useState } from "react";
 
 export default function AddProducts() {
-  const [formData, setFormData] = useState({
+  const [productData, setProductData] = useState({
     name: "",
     price: "",
-    iamge: null,
+    image: null,
   });
 
   function handleChange(e) {
-    console.log(e.target.name);
-    console.log(e.target.name.value);
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    // console.log(e.target.name);
+    // console.log(e.target.name.value);
+    if (e.target.name == "image") {
+      setProductData({ ...productData, image: e.target.files[0] });
+    } else {
+      setProductData({ ...productData, [e.target.name]: e.target.value });
+    }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     let token = localStorage.getItem("token");
 
+    let formData = new FormData();
+    formData.append("name", productData.name);
+    formData.append("price", productData.price);
+    formData.append("image", productData.image);
+
     axios
-      .post(
-        "https://ecommerce-sagartmg2.vercel.app/api/products",
-        {
-          name: formData.name,
-          price: formData.price,
+      .post("https://ecommerce-sagartmg2.vercel.app/api/products", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      )
+      })
       .then((res) => {})
       .catch((err) => {});
   }
@@ -45,7 +47,7 @@ export default function AddProducts() {
               type="text"
               name="name"
               onChange={handleChange}
-              value={formData.name}
+              value={productData.name}
               placeholder="name"
             />
           </div>
@@ -55,7 +57,7 @@ export default function AddProducts() {
               type="text"
               name="price"
               onChange={handleChange}
-              value={formData.price}
+              value={productData.price}
               placeholder="price"
             />
           </div>
@@ -64,7 +66,7 @@ export default function AddProducts() {
               className="form-control"
               type="file"
               name="image"
-              //   onChange={handleChange}
+              onChange={handleChange}
               //   value={formData.price}
               //   placeholder="price"
             />

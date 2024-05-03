@@ -3,17 +3,23 @@ import { CiMail } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
 import { IoMenu } from "react-icons/io5";
 import CssPositions from "../CssPositions";
-import { Link } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, setReduxUser } from "../../redux/slice/userSlice";
+import { SELLER } from "../../constants/role";
 
 export default function Header() {
+  const params = useParams();
+  const location = useLocation();
+  const { pathname } = location;
+
+  console.log({ location });
+
   let user = useSelector((store) => store.user.value);
   let cartItems = useSelector((store) => store.cart.value);
 
-
-  let dispatch = useDispatch()  
+  let dispatch = useDispatch();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -21,6 +27,14 @@ export default function Header() {
     console.log("show menu");
     setIsMenuOpen(!isMenuOpen);
   }
+
+  let navLinks = [
+    {
+      path: "/",
+      title: "home",
+    },
+  ];
+
   return (
     <header>
       {/* <CssPositions/> */}
@@ -38,15 +52,19 @@ export default function Header() {
             {user ? (
               <>
                 {JSON.stringify(user?.name)}
-                <span onClick={() =>{
-                  // dispatch(setReduxUser(null))
-                  dispatch(logout())
-                }}>logout</span>
+                <span
+                  onClick={() => {
+                    // dispatch(setReduxUser(null))
+                    dispatch(logout());
+                  }}
+                >
+                  logout
+                </span>
               </>
             ) : (
               <Link to={"/login"}> login </Link>
             )}
-            <Link to={"/cart"}> cart( {cartItems.length} )  </Link>
+            <Link to={"/cart"}> cart( {cartItems.length} ) </Link>
           </div>
         </nav>
       </div>
@@ -72,19 +90,33 @@ export default function Header() {
             {/* <button className="md:hidden" onClick={toggleMenu}>
               close
             </button> */}
-            <Link to="/" className="text-secondary">
+            <Link
+              to="/"
+              className={`${pathname == "/" ? "text-secondary" : " hover:text-secondary"}`}
+            >
               home
               {/* <span className="text-[9px] ml-1">v</span> */}
             </Link>
-            <Link to="/products" className="hover:text-secondary">
+            <Link
+              to="/products"
+              className={`${pathname == "/products" ? "text-secondary" : " hover:text-secondary"}`}
+            >
               products
             </Link>
-            <Link to="/sellers/products" className="hover:text-secondary">
-              seller-products
-            </Link>
-            <Link to="/sellers/products/add" className="hover:text-secondary">
-              add products
-            </Link>
+            {user && user.role == SELLER && (
+              <>
+                <Link to="/sellers/products"   className={`${pathname == "/sellers/products" ? "text-secondary" : " hover:text-secondary"}`}>
+                  seller-products
+                </Link>
+                <Link
+                  to="/sellers/products/add"
+                  className="hover:text-secondary"
+                >
+                  add products
+                </Link>
+              </>
+            )}
+
             <a href="" className="hover:text-secondary">
               pages
             </a>
@@ -129,6 +161,5 @@ export default function Header() {
   );
 }
 
-
-export const navlinks = [""]
-export const socialMedias = [""]
+export const navlinks = [""];
+export const socialMedias = [""];

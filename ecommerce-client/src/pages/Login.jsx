@@ -23,7 +23,7 @@ export default function Login() {
   // }
 
   const [formData, setFormData] = useState({
-    email: "b@b.com",
+    email: "s@s.com",
     password: "password",
   });
 
@@ -37,7 +37,7 @@ export default function Login() {
       })
       .then((res) => {
         toast.success("success");
-        // navigate("/");
+        navigate("/");
         console.log("success");
         dispatch(setReduxUser(res.data.user)); // change redux store value
 
