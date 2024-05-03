@@ -19,6 +19,7 @@ import { setReduxUser } from "./redux/slice/userSlice";
 import { useState } from "react";
 import SellerProducts from "./pages/seller/Products";
 import AddProducts from "./pages/seller/AddProducts";
+import LoadingScreen from "./components/common/LoadingScreen";
 
 const router = createBrowserRouter([
   {
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
               },
               {
                 path: "add",
-                element: <AddProducts/>,
+                element: <AddProducts />,
               },
             ],
           },
@@ -112,7 +113,7 @@ function App() {
 
       {isLoading ? (
         <div className=" flex h-screen items-center justify-center">
-          is loading....
+          <LoadingScreen />
         </div>
       ) : (
         <div className="font-lato">

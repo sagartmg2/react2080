@@ -14,8 +14,8 @@ export default function BreadCrumb(props) {
             <Link to="/" className="hover:text-secondary">
               Home .
             </Link>
-            <Link to="/pages" className="hover:text-secondary">
-              Pages .
+            <Link to="/products" className="hover:text-secondary">
+              Products .
             </Link>
             <span className="text-secondary">{props.title}</span>
           </div>

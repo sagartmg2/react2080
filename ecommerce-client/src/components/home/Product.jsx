@@ -18,7 +18,7 @@ export default function Product(props) {
     >
       <div
         onClick={(e) => {
-          e.stopPropagation();
+          ;e.stopPropagation()
           dispatch(addCartItem(props));
         }}
         className=" absolute left-[11px] top-[11px] hidden h-[30px] w-[30px] items-center justify-center rounded-full border border-primary transition-all group-hover:flex"

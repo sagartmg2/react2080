@@ -38,10 +38,14 @@ export default function Header() {
             {user ? (
               <>
                 {JSON.stringify(user?.name)}
-                <span onClick={() =>{
-                  // dispatch(setReduxUser(null))
-                  dispatch(logout())
-                }}>logout</span>
+                <span
+                  onClick={() => {
+                    // dispatch(setReduxUser(null))
+                    dispatch(logout());
+                  }}
+                >
+                  logout
+                </span>
               </>
             ) : (
               <Link to={"/login"}> login </Link>

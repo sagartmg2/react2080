@@ -10,6 +10,7 @@ export default function Slug() {
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
 
   const params = useParams();
 
@@ -18,6 +19,7 @@ export default function Slug() {
       .get(`https://ecommerce-sagartmg2.vercel.app/api/products/${params.slug}`)
       .then((res) => {
         setProduct(res.data.data);
+        setIsLoading(false);
       });
   }, []);
 
